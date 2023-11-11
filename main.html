@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css"><link>
+    <title>Document</title>
+</head>
+<body>
+
+<h1>ThE L33T SpEaK GeNeRaToR</h1>
+<h2>(The Leet Speak Generator)</h2>
+<p>Have you ever wanted to make your text an unreadable mess that hurts the eyes and mind? <br>
+Look no further!! 
+</p>
+
+	<!-- <div class="shape-blob"></div>
+	<div class="shape-blob one"></div>
+	<div class="shape-blob two"></div> -->
+
+<form id="formID">
+
+  <label for="fname">put your text here:</label> <br><br>
+  <textarea id="sentance" rows="4" cols="50"></textarea><br><br>
+
+  <!-- <input type="text" id="sentance" name="fname"><br><br> -->
+  <input type="submit" value="Submit" id="submitButton" onclick="return stringFunc();">
+  <br><br> 
+  <button onclick="document.getElementById('sentance').value = ''">Clear Input</button> <br><br>
+
+  <textarea id="outputText" rows="4" cols="50"></textarea><br><br>
+  <button onclick="document.getElementById('outputText').value = ''">Clear Output</button> <br><br>
+  
+  <input type="checkbox" id="caps" name="caps" value="yes">  
+  <label for="letters"> every other letter CAPS </label> <br> 
+  
+  <input type="checkbox" id="s" name="letters" value="yes">  
+  <label for="letters"> s to $ </label> <br> 
+  
+  <input type="checkbox" id="e" name="letters" value="yes">  
+  <label for="letters"> e to 3 </label> <br> 
+  
+  <input type="checkbox" id="e2" name="letters" value="yes">  
+  <label for="letters"> e to € </label> <br> 
+  
+  <input type="checkbox" id="u" name="letters" value="yes">  
+  <label for="letters"> u to ü </label> <br> 
+  
+  <input type="checkbox" id="i" name="letters" value="yes">  
+  <label for="letters"> i to ! </label> <br> 
+    
+  <input type="checkbox" id="o" name="letters" value="yes">  
+  <label for="letters"> o to ø </label> <br> 
+ 
+
+
+</form>
+
+<!-- the <pre></pre> tag takes pre-formatted text so all spacing is the same  -->
+<!-- <div id=preContainer>
+  <pre id="outputText">
+  </pre>
+</div> -->
+
+<script src="index.js"></script>
+</body>
+</html>
