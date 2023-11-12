@@ -3,7 +3,6 @@ var upperCase = [];
 var lowerCase = [];
 var inputString = "";
 
-
 //waits for the submit button to be clicked
 //prevent default prevent the page reloading and deleting the string
 
@@ -17,12 +16,27 @@ formID.addEventListener('submit', e => {
 function stringFunc() {
  
   inputString = document.getElementById("sentance").value;
-  // console.log(inputString);
-  sToDollar(inputString);
-  toUpperCase(inputString)
+
+  //checks to see if anything has been entered. 
+  if (inputString == "") {
+    console.log("You crazy fool! You entered no text! please enter some text."); 
+    /* document.getElementById("outputText").innerHTML = emptyString.toString(); */
+    alert("You crazy fool! You entered no text! please enter some text");
+    }
+
+  //checks which tick boxes have been selected and runs the relevant function.
+  if (e2.checked) { eToEuro(inputString) }
+  if (uToU.checked) { uToUmlaut(inputString) }
+  if (oToO.checked) { oToOstrikeThrough(inputString)}
+  if (s.checked) { sToDollar(inputString)}
+  if (i.checked) {iToExclamation(inputString)}
+  if (caps.checked) { toUpperCase(inputString)}
+  // if (e.checked && !e2.checked) {eToThree(inputString)}
   
+  printString(inputString);
   //return inputString;
   }
+
 
 //goes thought the string and makes every other letter CAPITAL
 //it pushes these CAP and lower case letters to two arrays lowerCase and UpperCase
@@ -33,18 +47,7 @@ function toUpperCase (inputString) {
 
   let caps = document.getElementById("caps"); 
   
-  if (inputString == "") {
-    console.log("no text entered, please enter some text"); 
-    /* document.getElementById("outputText").innerHTML = emptyString.toString(); */
-    alert("empty string, please write some text");
-    }
-  // if CAPS is not checked exit out of function and set the output text to the input text
-  if (!caps.checked) { 
-    document.getElementById("outputText").value = inputString;
-    return
-    // else: itterate through the output text string, push leters alternately to 2 arrays, a caps and lower case one.
-    } else {
-       
+
       document.getElementById("outputText").value = ""      
   for (i = 0; i < inputString.length; i++) {
     if (i % 2 == 0) {
@@ -54,38 +57,60 @@ function toUpperCase (inputString) {
     }
   }
 
-//takes the Uppercase and lowerCase arrays and pushes them in sequence to an array 'outputString'
+  //takes the Uppercase and lowerCase arrays and pushes them in sequence to an array 'outputString'
 for (index = 0; index < upperCase.length; index++) {
   outputString.push(upperCase[index]); 
   outputString.push(lowerCase[index]);
 }
-
 //takes the outputString and uses the .join method to combine them into a single sentance
 var inputString = outputString.join(' '); 
 console.log("here is the final string: " + inputString); 
 
-//assigns the "outputText" section of the HTML the value of the final string. 
-document.getElementById("outputText").value = inputString;
-  
-  }
+return inputString;  
 }
-toUpperCase(); 
 
-//check the check boxes and change the input string accordingly
-function sToDollar (inputString) { 
-	
-  let newString = inputString.replaceAll("s", "$")
-  // .replaceAll("e", "€") 
-  // .replaceAll("u", "ü")
-  // .replaceAll("o", "ø")
-  //.replaceAll("i", "!");                  
+function eToEuro (inputString) {
+  inputString = inputString.replaceAll("e", "€")
   
-  inputString = newString;
-  //assigns the "outputText" section of the HTML the value of the final string. 
-  document.getElementById("outputText").value = inputString;
-	console.log(inputString); 	
-    
-  //return newString
+  console.log(inputString);
+  return inputString;  
+}
+
+function uToUmlaut (inputString) {
+  inputString = inputString.replaceAll("u", "ü")
+  console.log(inputString);
+  return inputString;  
+}
+
+function oToOstrikeThrough (inputString) {
+  inputString = inputString.replaceAll("o", "ø")
+  console.log(inputString);
+  return inputString;  
+}
+
+function sToDollar (inputString) { 
+	inputString = inputString.replaceAll("s", "$")
+  console.log(inputString);
+  return inputString;
+} 
+
+function iToExclamation (inputString) {
+  inputString = inputString.replaceAll("i", "!")
+  console.log(inputString);
+  return inputString;
+}
+
+function eToThree (inputString) {
+  inputString = inputString.replaceAll("e", "3")
+  console.log(inputString);
+  return inputString;
+}
+
+
+function printString (inputString) {
+    //assigns the "outputText" section of the HTML the value of the final string. 
+    document.getElementById("outputText").value = inputString;
+    console.log(inputString); 	
 }
 
 
