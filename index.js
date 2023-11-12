@@ -9,14 +9,12 @@ var inputString = "";
 formID.addEventListener('submit', e => {
       e.preventDefault();     
       //text.innerHTML = 'clicked';
-      
     });   
 
 // gets the string from the sentance input box
 function stringFunc() {
  
   inputString = document.getElementById("sentance").value;
-
   //checks to see if anything has been entered. 
   if (inputString == "") {
     console.log("You crazy fool! You entered no text! please enter some text."); 
@@ -25,12 +23,25 @@ function stringFunc() {
     }
 
   //checks which tick boxes have been selected and runs the relevant function.
-  if (e2.checked) { eToEuro(inputString) }
-  if (uToU.checked) { uToUmlaut(inputString) }
-  if (oToO.checked) { oToOstrikeThrough(inputString)}
-  if (s.checked) { sToDollar(inputString)}
-  if (i.checked) {iToExclamation(inputString)}
-  if (caps.checked) { toUpperCase(inputString)}
+
+/* 
+READ HERE PEDRO FOR DANS MAGICAL EXPLANATION
+So Pete me ol mukka, all you needed to do was save the input string varaible within the String func scope to the returned strings from the below functions. 
+As what was happening that the varibles inside all of the internal functions may have been changing the string however the changed were not being saved at the scope of this function, 
+ inputString = eToEuro(inputString) means that input string at the stringFunc() scope was being saved to the returned value from eToEuro, so the changes were getting reflected the whole way down
+ If in doubt always throw a debugger in, its the best thing in JS
+
+ Ta 
+
+ DAN 
+*/
+
+  if (e2.checked) { inputString = eToEuro(inputString) }
+  if (uToU.checked) { inputString =  uToUmlaut(inputString) }
+  if (oToO.checked) { inputString =  oToOstrikeThrough(inputString)}
+  if (s.checked) { inputString =  sToDollar(inputString)}
+  if (i.checked) {inputString =  iToExclamation(inputString)}
+  if (caps.checked) { inputString =  toUpperCase(inputString)}
   // if (e.checked && !e2.checked) {eToThree(inputString)}
   
   printString(inputString);
